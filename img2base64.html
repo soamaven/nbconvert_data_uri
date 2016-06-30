@@ -11760,126 +11760,11 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">base64</span>
-<span class="kn">from</span> <span class="nn">html.parser</span> <span class="k">import</span> <span class="n">HTMLParser</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">ImportError</span>                               Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-1-840271e8a80c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
-<span class="ansi-green-fg">      1</span> <span class="ansi-green-intense-fg ansi-bold">import</span> base64
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 2</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">from</span> html<span class="ansi-yellow-intense-fg ansi-bold">.</span>parser <span class="ansi-green-intense-fg ansi-bold">import</span> HTMLParser
-
-<span class="ansi-red-intense-fg ansi-bold">ImportError</span>: No module named html.parser</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%%</span><span class="k">bash</span>
-cp /home/colton/PycharmProjects/LSCs/Images/ModifiedHoneyComb.png /home/colton/PycharmProjects/nbconvert_data_uri
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">MyHTMLParser</span><span class="p">(</span><span class="n">HTMLParser</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">handle_starttag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">attrs</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Encountered a start tag:&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Encountered attribute:&quot;</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">handle_endtag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Encountered an end tag :&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">handle_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Encountered some data  :&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[190]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">parser</span> <span class="o">=</span> <span class="n">MyHTMLParser</span><span class="p">()</span>
-<span class="n">parser</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="s1">&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;Test&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Parse me!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&lt;img src=&quot;./Images/My_image.png&quot; width=&quot;800&quot; height=&quot;800&quot; alt=&quot;Alt_name&quot; title=&quot;Mytitle&quot; align=&quot;center&quot; /&gt;&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Encountered a start tag: html
-Encountered a start tag: head
-Encountered a start tag: title
-Encountered some data  : Test
-Encountered an end tag : title
-Encountered an end tag : head
-Encountered a start tag: body
-Encountered a start tag: h1
-Encountered some data  : Parse me!
-Encountered an end tag : h1
-Encountered an end tag : body
-Encountered an end tag : html
-Encountered a start tag: img
-Encountered attribute: src ./Images/My_image.png
-Encountered attribute: width 800
-Encountered attribute: height 800
-Encountered attribute: alt Alt_name
-Encountered attribute: title Mytitle
-Encountered attribute: align center
-Encountered an end tag : img
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;Test&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Parse me!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&lt;img src=&quot;ModifiedHoneyComb.png&quot; width=&quot;800&quot; height=&quot;800&quot; alt=&quot;Alt_name&quot; title=&quot;Mytitle&quot; align=&quot;center&quot; /&gt;&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A non-trivial string of html code to parse as a test input</span>
+<span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;Test&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Parse me!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&lt;img src=&quot;favorites.png&quot; width=&quot;800&quot; height=&quot;800&quot; alt=&quot;Alt_name&quot; title=&quot;Mytitle&quot; align=&quot;center&quot; /&gt;&lt;html&gt;&lt;head&gt;&lt;title&gt;Test&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Parse me!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span>
 </pre></div>
 
 </div>
@@ -11889,7 +11774,7 @@ Encountered an end tag : img
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;HTML Image handling for embedded images in markdown cells.&quot;&quot;&quot;</span>
@@ -12012,7 +11897,25 @@ Encountered an end tag : img
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="n">HTMLParser</span><span class="o">.</span><span class="n">feed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         
-<span class="n">img2base64</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">img2base64</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Couldn&#39;t figure out a programmatic way to copy the output to a new MD cell,</span>
+<span class="c1">#so I just display it from a code cell</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">output</span><span class="p">))</span>
+
+<span class="c1"># The original text is displayed on either side of where the image should be</span>
 </pre></div>
 
 </div>
@@ -12023,28 +11926,60 @@ Encountered an end tag : img
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
+<div class="output_area"><div class="prompt"></div>
 
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;Test&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Parse me!&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&lt;img src=&#34;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjoAAAIvCAYAAAB9U3HoAAAABHNCSVQICAgIfAhkiAAAABl0RVh0U29mdHdhcmUAZ25vbWUtc2NyZWVuc2hvdO8Dvz4AACAASURBVHic7d1bdlrLkgXQsMv9Ou6Z0j2zW0Z9WPgihBDar4wI5qxR4_roAbmTRewFSOhbjHEK2MAY4-1_x3j_Nbc-Nt5_jLqW5EAGerl1e8oBRxtjxMvpFN8UHZZ65IT26WUoPuXtkQMZqOXRYvPp5cgBG1J0WORy8CwZZA9dx8XlGnQ57Z0DGcjPLCA7RYcvOQ-ZvQbah9f7en2GXA4zciADuZgFVHEuOt9nL4T8Zg22y-s03OZzgsMsoCJFh7tmDrZ_azDgppudAxmYb3YGLq9bDvgKL13xoTHG1KF2y4hhyB0sWw5k4HjZMhAhB3zOS1fclXGwRRhuR8uYAxk4VsYMRMgBj1N0eKfC8Kiwxuqy73H29XVQYY8rrJG5FB1uyvgI7izz2rrJutdZ19VR5r3OvDbyUHR4I-vT1Nc8bb2vCjmQgX1VyECEHPA5RYd_Kg6LimvOrsoJLsJJbi8V97TimjmGosMbVU5wEbXWWkXVk0XVdWdW6f5Vaa0cT9EhImqfKCqvPaNqJ41q682u8v2p8trZj6LDPxVPGBXXnFWll6yueQlrWxVzUHHNHEPRAQDaUnQo_Ug-wqP5LVTPQIQcbKF6DmSAWxQdAKAtRQcAaEvReXKdnubtdCxH6rZv3Y7nKJ32rdOxsJ6iQ-nX5M86HMNMXfavy3HM0mH_OhwD21J0AIC2FB0AoC1F54l1fB274zHB3jrebzoeE8soOk-u0-vZnY4Fjtbp_tPpWFhP0WF3hg4RcsBfcsDRFB12Z7ARIQf8JQccTdF5cp2GTqdjgaN1uv90OhbWU3SeWMcf1ut4TLC3jvebjsfEMooOANCWogMAtKXoPLkxRovXs0cMT1Uv1CUDEXKwRpccyADXFB0AoC1FBwBoS9EhImr_OmbltWdSfR-rrz-LyvtYee3sR9GhxevZHY5hpi771-U4Zumwfx2OgW0pOgBAW4oO_1R82rfimrOq_Fs3ftNmWxVzUHHNHEPRISJqP91bee0ZVTthVFtvdpXvT5XXzn4UHd6odNKotNYqqp4oqq47s0r3r0pr5XiKDv9UPFlUXHN2lV7C8pLVPiruacU1cwxFhzeqnOSc4PZVIQcysK8KGYiQAz6n6PBO9gFnsB0jcw5k4BiZMxAhBzxG0eGmrAPOYDtWxhzIwLEyZiBCDnjctxjjNHsR5HUeJLMH3fn6DbY5MuRABubKkIHL65cDPjPGiJfTyTM63JdhuBls883OgQzMNzsDl9ctB3yFosOnZg44gy2PWTmQgTzMAiry0hVfctSgM9RyOyIHMpCbWUB255euFB0WuRw6Wwy668sw1GrYMwcyUMP17SQHZKHosJmlg84w62VJDhTcfpaUXzlgD4oOu_lo0Blmz-WRHMhAb_fKrxywN0WHQ7w52RlmT0sOiJADjqXoAABteR8dAKA9RQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKCtH7MXQG9jjJv_5rnIARFywByKDrs4D7GXtx9893l6u5cDGXgOl7ezHDCDosOmbp7YXhlyz-OhHMhAa_cy8ObjcsDO_IwOmxljxEt8PNgunb_OcOvn0RzIQF9mAZkoOmziPNi-yoDrZUkOZKAXs4BsFB1W22I4GXD1rb0NZaA-s4CMFB02seQR3BbfSy5Lb0sZ6MMsIBtFB1htq0fhHs0DW1N0gE2sfTTu0TywB0WHVbZ8BO7RPNRlFpCVosNqWzwS92ge6jMLyEjRYZUxRvza4HJ-hUdxUJlZQFaKDrCJtSe5LU6SANcUHWA1v3UFZKXosIk1j8Y9ku9j6W0pA32YBWSj6LCad0MlwjsjYxaQk6LDJpb-IKIfPOxlSQ5koBezgGwUHTZzHnCPDLnz1xls_TyaAxnoyywgkx-zF0Av_4bV6_9evifGr1tfR0uP5EAGervOQIQcMIeiwy5uDTkD7fnIAW9ubzlggm8xxmn2IgAAtjTGiJfTyTM6exsewTw9GSBCDpCBWRSdjV2Hd8S4-Tkh7-3Nbf1BBm79N32YBUSYBRl46WoDHwX57vdcfZ2Q13bvpHb3--4MPuoxCzAL8ji_dKXoLLA0yHcvU8jLWXJSu3t5TnjlmAVEmAVZKToLnMO2RZDvXs_r5Qt3TnKADBAhB9kpOl9wVJjfXa9wpyIHyAARclCFovOAWWF-tw7hnipDDmRgPjkgQwYur18O7lN0PjHGmB7mayOGYB8sWw5kYA45IFsGIuTgM-ei429d3ZAx0BFCfbSMOZCB48kBGTMQIQePUnSuVAhNhTVWl3mPDbfjZD3BncnB_irscYU1zqTo3JB6sCVeWzeZ91rZ2V_6kpN4bd1k3uvMa8tC0bmQfbCdOcntSw6QASLkoAtF51XFkFRcc3YV97TimjOruJ8V15xdxT2tuOYjKDoXKjT3s0prrabS3lZaayWV9rXSWquptLeV1no0RSdqt-DKa8-m8l5WXnsmlfex8tqzqbyXlde-F0XnVcU2XHHN2VXc04przqziflZcc3YV97Timo-g6DSgwa9nD-lAjtezh_08fdGpHmoNfjvV97J6lmervn_V85tJ9b2snuWtPX3Riagf6gjBXqPD3nXIcAYd9rFDnmfpsHcdMrw1RacBwV7PHtKBHK9nD_tRdACAtp666FR518tHeGfMZWSACDlABjp76qIDAPSm6AAAbSk6AEBbig4A0Jaic4AuP-DGcjJAhBwgAzMoOgcQbGSACDlABmZQdACAthQdAKAtRQcAaEvRAQDaeuqi4y2_kQEi5AAZ6Oypiw4A0Jui00CXRyEz2UM6kOP17GE_ik70CLanKZfrsHcdMpxBh33skOdZOuxdhwxv7emLTvVgC_V2qu9l9SzPVn3_quc3k-p7WT3LW3v6otOBUK9nD-lAjtezh_0oOq8qNviKa86u4p5WXHNmFfez4pqzq7inFdd8BEUnajf4ymvPpvJeVl57JpX3sfLas6m8l5XXvhdF50KlNlxprdVU2ttKa62k0r5WWms1lfa20lqPpui8qtiCK645u4p7WnHNmVXcz4przq7inlZc8xEUnQtV3hnTu17uSw6QASLkoAtF54bMwc68tm4y77XBtr_sJ7nMa-sm815nXlsWis6VCiePCmusLvMeKznHSV925GB3Ffa4whpnUnRuyDrcnOCOlTEHMnA8OSBjBiLk4FHfYozT7EVkdQ7Q7ICfr1-g58iQAxmYTw7IkIHL65eD-8YY8XI6KTqPmBVuYc5FDpABIuSgCkVngaPCLcy5yQEyQIQcZKforHAdti1CfnkZwlzD5e20dQauL5-czAIizIKsFJ0NLQm5IPey9ITnpNaLWYBZkIeis5N7IRfk5_HRCc9J7XmYBUSYBTMpOgd5E3JBfkoyQIQcIANHU3QAgLbORccbBgIAbSk6AEBbig4A0JaiAwC0pegAAG0pOgBAW4oOANCWogMAtKXoAABtKToAQFuKDgDQlqIDALSl6AAAbSk6AEBbig4A0JaiAwC0pegAAG0pOgBAW4oOANCWogMAtKXoAABtKToAQFuKDgDQlqIDALSl6AAAbSk6AEBbig4A0JaiAwC0pegAAG0pOgBAW4oOANCWogMAtKXoAABtKToAQFuKDgDQlqIDALSl6AAAbSk6AEBbP2YvoKsxxpc-Tk9ygAwQIQczfYsxTrMX0cV1YF9ufM2vO19PD5e362cZuP56ejALiDALZhtjxMvppOhsZYxxM8j3_ArB7kYOkAEi5CCDc9HxMzobWBLoiL8NX6j7kANkgAg5yEbRWWmLUAp2fXKADBAhBxkpOhtY0ty3-F5ykQNkgAg5yEbRSUKDr8ttx5bkqS63XU6KTgIafH1uQ7YgR_W5DfNRdACAthQdAKAtRQcAaEvRAQDaUnQS8G6YtY0x3r2VOyxhFtRmFuSk6GxgTbDdKfqQA2SACDnIRtFZybtgEiEHyAB_yUE-is4Glj5d6WnqXuQAGSBCDrL5v_j5c8xeRAe_f_6Mb79_x5-I-PnJ1_6KiD8h0B3JATJAhBxk8PP37_g5RnyLMU6zF9PNZVgv3yXz143P09f5dr6VgcvP05dZQIRZMMsYI15OJ0Vnb5cBFubnJANEyAEycDRFBwBo61x0fux9Jbf-zfOQASLkgL_kgBkZ2LzovDmIGLc_LuCtPZKBW_9NL2YB7-7zcvCUZs-C1S9d3Qvyh99z9TVCXtuSDFx_nQzUZxYQ8fFJ7e73yEErWWbBqp_RWRLku5fnhFfOnhm4vnzyMgtY-kDn7mXKQTkZZ8GionO-si0O4sPreL1s4c7piAxcXr4c5GQWYBYQkXsWfKnoHBXoN9cp3KnMyMDl9clBDmYBZgERNWbBueh8-icghJpZGbi8TjmYzyzALCCi3iy4W3RmhvryegV7ntkZuLxuOZhndg5kYL7ZGbi8bjmYZ3YOlmTgw5euxhhTA31txBDug2XLQIQczJAtBzJwvGwZiJCDGbLl4LMM3H3pKtvBRAj10TJmIEIOjpYxBzJwrIwZiJCDo2XMwaMZeFd0Mh7MmWAfI3MGIuTgKJlzIAPHyJyBCDk4SuYcPJKBN0Un88GcCfa-KmQgQg72ViEHMrCvChmIkIO9VcjBZxn4V3QqHMyZYO-j4p5WXHN2ZgEV97TimrPrMgu-R9QNSNV1Z1Yl1BG11lpF1ftU1XVnVun-VWmtVVS9T91a9_-e0SkWlGrrza5qqCNqrz2javetauvNrvL9qfLaM6p23_povd8rPTV1zdPW26qYg4przsos4KxiDiquOatus-DTd0YGAKiqRdHxSG6dDvvX4Rhm6rJ_XY5jlg771-EYZuqyf5fH8b3q01Nn1defReV9rLz2TKrvY_X1Z1F5HyuvPZPq-3i9_hbP6AAA3KLoAABttSg6fuNiuco_XX9JBpbrkoEIOVijSw5kYLkuGYh4-_JVi6IDAHCLogMAtKXoPLGOT-92PCbYW8f7TcdjYhlF58l1eT02otexwNE63X86HQvr7V50BA4ZIEIO-EsOODoDig67kwEi5IC_5IB2RYfcOg2dTscCR-t0_-l0LKyn6Dyxjj-s1_GYYG8d7zcdj4llFB0AoC1FBwBoq0XR8XrsOh32r8MxzNRl_7ocxywd9q_DMczUZf9a_gkIr8cu02nfOh3LkbrtW7fjOUqnfet0LEfqum9tig4AwDVFBwBo63v11-NGjLZPtx1ljFH6dVkZWK96BiLkYAvVcyAD61XPQMT7HHhGBwBo63vl9qa9b6tiDiquOSuzgLOKOai45qy6zYLvl5-spNp6s6t8kqi89oyq3beqrTe7yvenymvPqNp966P1fo-oG46q686sUrArrbWKqvepquvOrNL9q9Jaq6h6n7q17u-Xn6wSFk9T76PinlZcc3ZmARX3tOKas-syC978MHKFgzLY9lUhAxFysLcKOZCBfVXIQIQc7K1CDj7LwM3fusp6UFnX1VHmvc68tm6y7nXWdXWUea8zr62brHv9yLreFZ3szTj7-jqosMcV1lhd9j3Ovr4OKuxxhTVWl32PP1vf7Wd0Ej5V5enJY2XMQIQcHC1jDmTgWBkzECEHR8uYg0cz8C3GOH14Ia8XMPPgztct0HNkyMDl9cvBHBlyIANzZcjA5fXLwRwZcvBoBsYY8XI63S86l198eeFHEOZcZoVbDnIxCzALiKgxC75UdC6_6fLK9iDMuR0VbjnIzSzALCAi9yxYVHQuv_l6AWtcXoYw17BnBq4vn7zMAq5vJzl4Thlnwaqic31Bb_77gQN0Uutl6aAzzHoxC4hYdsKTg16yzILNis6tC_737_jg30Lc2iMZuP46-jELuHfCk4PnMWsW7FZ0rq_k1r95HjJAhBzwlxxwZAYOKToAADOci87NNwwEAOhA0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2vqx54WPMW7-m-chA0TIAX_JATMysHnRuVz4y9tPvPs8fZ1v51sZuPw8vd3LgQw8B-cEIuaeE77FGKctLujmQdzw68b30MOHA-0GOejr0RzIQF9mARHLcrBlBsYY8XI6bVN0xhifHsS1PQ6KeR4tutfkoJclOZCBXswCItblYKsMnIvO6h9GXrqg88ELdX1LA335PXJQ39IcyEAfZgER63Jw-f1b2eS3rpYezNLvI581t6Uc9GEWYBYQkWsWrCo6Wz69BNRlFgAROWfB6md01rYvDR56MAuAiHyzwBsGssrWPyEP1GQWkJWiw2pbtG-P5qE-s4Bs_vz5o-iw3q_Pv-SQywDmMgvI5r___lN0WMfT1UCEWUBeq4vO2vatvUMPZgEQkW8W-PVyYDWzAIjIOQs2eWfkpe1ry7d6Zp41GYiQgy7MAswCIvLNgs1-RuerByXQvSwNthz0siQHMtCLWUDE8lmwh_-Lnz_H2gv5_fNn_Pz9O_5ExM9PvvZXRPwJge7o98-f8U0Ont6jOZCBvswCIr6eg4htc_Dz9-_4OcY2f7380uUiL98PwV-mfS63_qjbrxufp7d7OZCB5-CcQMScc8J4_evlmxed6yu59W-ehwwQIQf8JQccmYFDig4AwAznovNj9kK68wgGGSBCDpCBWRSdjV2Hd8S4-Tkh7-3Nbf1BBm79N32YBUSYBRl46WoDHwX57vdcfZ2Q13bvpHb3--4MPuoxCzAL8vAzOissDfLdyxTycpac1O5enhNeOWYBEWZBVorOAuewbRHku9fzevnCnZMcIANEyEF2is4XHBXmd9cr3KnMzIEM5DHGMAuenHNCDeeis9mfgOhqVqAvr1Oo55udAxnIYUbJiTALMpk9Cy7XwGMUnTtmBvrfGgR7uiw5kIG5ZpWcf9dvFkyXZRZcroXPeenqA7OH2i1OdsfLlgMZmEMOyJaBCDn4jJeu7sgY6AihPlrGHJwzIAfHOO911hxwjIwZiJCDRyk6V7IG-kywj5E5B566PkaGlynuMQuOkXkWRMjBIxSdC9kDfSbY-6qQg3H-PznYxTkDJXIgA7upMAsi5OAzis6riiGpuObsKu5pxTVnVnE_K645u4p7WnHNR1B0LlRo7meV1lpNpb2ttNZKKu1rpbVWU2lvK631aIpO1G7BldeeTeW9rLz2TCrvY-W1Z1N5LyuvfS-KzquKbbjimrOruKcV15xZxf2suObsKu5pxTUfQdFpQINfzx7SgRyvZw_7efqiUz3UGvx2qu9l9SzPVn3_quc3k-p7WT3LW3v6ohNRP9QRgr1Gh73rkOEMOuxjhzzP0mHvOmR4a4pOA4K9nj2kAzlezx72o-gAAG09ddHp8DTlpW7Hc4Rue9bteI7Sbd-6Hc8Ruu1Zt-NZ46mLTkSfpym7HMcMXfauy3HM0mX_uhzHDF32rstxbOXpiw4A0JeiAwC0pegAAG0pOgfweikyQIQcIAMzKDoHEGxkgAg5QAZmUHQAgLYUHQCgLUUHAGhL0QEA2nr6otPlB8O6HMcMXfauy3HM0mX_uhzHDF32rstxbOWpi063vwXS7XiO0G3Puh3PUbrtW7fjOUK3Pet2PGs8ddEBAHpTdBoYMbT3FcYYnuqlBbNgHbOgp6cvOoJNB05w65kFdGAWvPf0Rac6od6GkxzVmQXbMAv6UXReVQx2xTVnV3FPK645s4r7WXHN2VXc04prPoKiE7V_Or3y2rOpvJeV155J5X2svPZsKu9l5bXvRdG5UKkNV1prNZX2ttJaK6m0r5XWWk2lva201qMpOq8qtuCKa86u4p5WXHNmFfez4pqzq7inFdd8BEXnQpUfQvNDh_uSA2SACDnoQtG5IXOwM6-tm8x7bbDtL_tJLvPausm815nXloWic6XCyaPCGqvLvMdKznHSlx052F2FPa6wxpkUnRuyDjcnuGNlzIEMHE8OyJiBCDl41LcY4zR7EVmdAzQ74OfrF-g5MuVABubJcLIzC-bKNAsi5OAzY4x4OZ08o3NPhlAL9HxZciADc80uOmbBfFlmweVa-Jyi84mZwRboPGbnQAZymFV2zII8Zs-CyzXwGC9dfcFluPYK-eXlCnNOcoAMECEH2Z1fulJ0FroVuCVBv_4eQa7l-vbaIgO3Lpe8zAIizIKMFJ2NPTrsDLPeHhl2hllvZgERZkEGis4Bbg48IX4qMkCEHCADMyg6AEBbfr0cAGhP0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2voxewHdjTFu_pvnIQNEyAEyMIuis4PLAL-8_cS7z9PX-Xa-lYHLz9OXWUCEWTDbtxjjNHsRXdwM8w2_rr6eXuQAGSBCDmYbY8TL6aTobGWM8WmYr_0Kwe5GDpABIuQgg3PR8cPIG1gS6Ii_LV-o-5ADZIAIOchG0VlpaaDPBLsHOUAGiJCDjBSdJAS7LrcdW5Knutx2OSk6Caxp_-TgNmQLclSf2zAfRQcAaEvRAQDaUnQAgLYUHQCgLUUngV-ffwnJuQ3ZghzV5zbMR9FJwq8l1uW2Y0vyVJfbLidFZwNrGrz234ccIANEyEE2is5K5wa_JJz-kFsfcoAMECEHGfmjnhu5DOajf6n2-vuoTw6QASLkIAN_vXxHHwVcW38u59v5VgYuP09fZgERZsEsis5BLgMszM9JBoiQA2TgaIoOANDWuej8mL0QevMIhgg54C85YAZFh829GWYxbn781n_TyyM5kIHe3t3n5YAJvHTFaveG2d3vu1OCqGdJDq6_Rg7q-6jg3v0eOWAHfkaHVZYMs7uXZ9CVtGcOZKCGpQ907l6mHLABRYdFzkNni2F293peL9-Qy-mIHMhAbmYB2Sk6fMlRQ-3d9RpyqczIgQzkYhZQxbno-BMQfGrWYLu8TsNtPic4zAIqUnS4a-Zg-7cGA2662TmQgflmZ-DyuuWAr_DSFR8aY0wdareMGIbcwbLlQAaOly0DEXLA57x0xV0ZB1uE4Xa0jDmQgWNlzECEHPA4RYd3KgyPCmusLvseZ19fBxX2uMIamUvR4aaMj-DOMq-tm6x7nXVdHWXe68xrIw9FhzeyPk19zdPW-6qQAxnYV4UMRMgBn1N0-KfKYDsz4PZRKQcysI9KGYiQA-5TdIB_qp3gIpzkgPsUHSKi5gkuwkluS1UzECEHW6qaAxngI4oOANCWokOLR0EdjmGmLvvX5Thm6bB_HY6BbSk6RETtX9OsvPZMqu9j9fVnUXkfK6-d_Sg6AEBbig4A0Jai8-Q6vZ7d6ViO1G3fuh3PUTrtW6djYT1Fhxava3c4hpm67F-X45ilw_51OAa2pegAAG0pOgBAW4rOE6v6Dqgf8c6osIxZQGeKDrvrNEBZTg6IkAOOp-iwO4ONCDngLzngaIrOk-s0dDodCxyt0_2n07GwnqLzxDq-ht3xmGBvHe83HY-JZRQdAKAtRQcAaEvRocXr2R2OYaYu-9flOGbpsH8djoFtKTpPrtPr2J2O5Ujd9q3b8Ryl0751OhbWU3QAgLYUHQCgLUWHiKj9unbltWdSfR-rrz-LyvtYee3sR9GhxevZHY5hpi771-U4Zumwfx2OgW0pOgBAW4oOEVH3rxf7K8XbqZqBCDnYUtUcyAAfUXSAfyqe5JzggHsUHf6pdpJzgttHpRzIwD4qZSBCDrhP0eGNKgPOYNtXhRzIwL4qZCBCDvicosNNmQdc5rV1k3Wvs66ro8x7nXlt5KHo8E6FR0cV1lhd9j3Ovr4OKuxxhTUyl6LDTVmftvY09bEy5kAGjpUxAxFywOO-xRin2Ysgr_MgmT3oztdvsM2RIQcyMFeGDFxevxzwmTFGvJxOntHhvgzDzWCbb3YOZGC-2Rm4vG454CsUHT41c8AZbHnMyoEM5GEWUJGXrviSowadoZbbETmQgdzMArI7v3Sl6LDI5dDZYtBdX4ahVsOeOZCBGq5vJzkgC0WHzSwddIZZL0tyoOD2s6T8ygF7UHTYzUeDzjB7Lo_kQAZ6u1d-5YC9KToc4s3JzjB7WnJAhBxwLEUHAGjL--gAAO0pOgBAW4oOANCWogMAtKXoAABtKToAQFuKDgDQlqIDALSl6AAAbSk6AEBbig4A0JaiAwC0pegAAG0pOgBAW4oOANCWogMAtKXoAABtKToAQFuKDgDQlqIDALSl6AAAbSk6AEBbig4A0JaiAwC0pegAAG0pOgBAW4oOANCWogMAtKXoAABtKToAQFuKDgDQlqIDALSl6AAAbSk6AEBbig4A0JaiAwC0pegAAG39mL0Aehtj3Pw3z0UOiJAD5lB02MV5iL28_eC7z9PbvRzIwHO4vJ3lgBkUHTZ188T2ypB7Hg_lQAZau5eBNx-XA3bmZ3TYzBgjXuLjwXbp_HWGWz-P5kAG-jILyETRYRPnwfZVBlwvS3IgA72YBWSj6LDaFsPJgKtv7W0oA_WZrqonoAAAAPdJREFUBWSk6LCJJY_gtvhecll6W8pAH2YB2Sg6wGpLX6645KULYA-KDqtseWJykoO6zAKyUnRYbYunmz1lDfWZBWSk6LDarySXAcxlFpCRosMqnq4GIswC8lJ0gE2sfSTukTywB0UHWG2rR-AeyQNbU3TYxJpH4x7J97H0tpSBPswCslF0WM27oRLhnZExC8hJ0WETY4xFj8Z-hcHWyZIcyEAvZgHZ_Ji9APoYY0RcDKpb74dxPQANtn6-mgMZ6Oc6AxFywDzfRozT__5zvP7_NR_3cR_3cR_3cR_38Xof_3Y6nU43vgJgM3_-_In__vtv9jKAJ_T_w7ltd685nBQAAAAASUVORK5CYII=&#34; width=&#34;800&#34; height=&#34;800&#34; alt=&#34;Alt_name&#34; title=&#34;Mytitle&#34; align=&#34;center&#34; /&gt;&#39;</pre>
-</div>
-
+<div class="output_markdown rendered_html output_subarea ">
+<html><head><title>Test</title></head><body><h1>Parse me!</h1></body></html><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA_wD_AP-gvaeTAAAACXBIWXMAAABIAAAASABGyWs-AAAACXZwQWcAAAAYAAAAGAB4TKWmAAAEhUlEQVRIx91US4tcVRD-6j67e7r7ziPTQ9OZmHEwojJuxIhB1JCEBFdxETAqroMr_QGC4MJNQAVFFHwjCKKRSLIIGh0N0YAYDRHywjjJZN79uNN3-r7OqXLR3TOdSTI7NxYc6txzq77vq7p1D_AfG93u8Kft9-QMy-wnAolI8Njpi_76mMkHRy0yMAiCA0EMltrj56b1hgQ_79iWX7o0-5Jtuwf6BorjRDCiIJxpLTcnCyPFN_ZcmDl_6uG7qD7dOMApDuUHvQnTNPJKsR9U6-cMG-8VN_UdefKvOb6F4MS95crK4srxynh5IjuUhTVcALSG8ltQforaQjMO_MZhVnJ_afPI_lzeIDMnMCwDHKfQkYnWisjCtdlv-4ezL-y8tLS8SvDjxObc8lzzm8rYyG5v-1bqmxgTCJOkCViloqo-BWenEMwmYppArmxRZmxQiECiFERp0WFM0dU64sCRmb9nvy4U7Od3XfcjCwAaM_X9pcrIrtxYgdxRD-nSPNqJKZBqsEqRHffA8Q0yXFPs4Ry070OUXltaw_IIOqijVBl-emFq7lkAHxIAHB32fqhsGXhiYOcYwLoD3l1rAFgHKIoBzat7ThjKT8GJi3k_Pe8Y-iHrxJbBopCzzcwKVK22WrIoTVAaollEaZIOEBSLaCZRLKKYdMzgmIUjTRwzwBCYmrL54qgKmlssYekzHMOWJIFaakB6FIlmoONFS9srgW5p6FBDUgEEEBEQtedFREDMMAyyAWQsgbS0ZsWRRlpLRLR0yhZZAxYRFkgq0K32u87wdT1EVs9g5FxJoiQAsGDsm274aRhPCVtQfkzKjyj1Yyg_IbWckmqmUE1FuqlJB0yiBdSRSx3r3ZNlwBooUrTSOrNvaWXRAgBO4y-1NfSIVGsCAKIBCERYujoFPdZV26taRIQMglMqYtlXiW3iTQAwAMB2zI-WFhqXzfwQSQISJQCDCESQHnU9am-pwDTIGfEolQxqM9W33Iw9uUrw1HyznjabLza1FRr5AkC3vaLufKFZBtyyB00Zmb48dzzT776ye2aZAcDsBn2R6Kt7o2jaLXp7Xce0JElWWboq1z-3e27CrQxAsYN_Ls1_X3fN5w4urgTdWLM38atU__loGF7IZfN7c30ZV-JoQ-Vm1oG7eRBJaODCxbljV2165mU_atwUsz5pa9a5-HvV_61sOXu8_kIBSQzq-Qxd5WYhC7cyRKGv5bvLc8dej9WhmmH41xTzhgQtEfuE4uofQfjLNiXbS6WhTYjCm1pkD-bJKQ8gWExw9Mr8kcOJfrUOhNcVy5hJuiHgOxJogRMCmSrQOhWnJz2_NTo-MnS3yQpghlMegLPJQ-PGCn9yZf7TdzW_kwAhgBSAigWJwgYEDEC3p8sIgfRX5tOW3zLHvcID-ZJnWV4OC1N-_MHU0vufi3ysgQBtghBApIB4wxZpgG1AGYBmQGkgPityZnG5NX2f0I5WI-K3b9ReOyL4jAEfbYImrRHd9FNuOPCDBHKILBBsDZg7gImsYOgkYTIVsAmomEU1AYX_rf0L5MnfQwHIBdQAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTAtMDItMTBUMTI6Mjg6MTAtMDY6MDAAG4MqAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDA5LTA1LTI1VDIxOjIwOjE2LTA1OjAwhLoNbgAAAABJRU5ErkJggg==" width="800" height="800" alt="Alt_name" title="Mytitle" align="center" /><html><head><title>Test</title></head><body><h1>Parse me!</h1></body></html>
 </div>
 
 </div>
+
+</div>
 </div>
 
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjoAAAIvCAYAAAB9U3HoAAAABHNCSVQICAgIfAhkiAAAABl0RVh0U29mdHdhcmUAZ25vbWUtc2NyZWVuc2hvdO8Dvz4AACAASURBVHic7d1bdlrLkgXQsMv9Ou6Z0j2zW0Z9WPgihBDar4wI5qxR4_roAbmTRewFSOhbjHEK2MAY4-1_x3j_Nbc-Nt5_jLqW5EAGerl1e8oBRxtjxMvpFN8UHZZ65IT26WUoPuXtkQMZqOXRYvPp5cgBG1J0WORy8CwZZA9dx8XlGnQ57Z0DGcjPLCA7RYcvOQ-ZvQbah9f7en2GXA4zciADuZgFVHEuOt9nL4T8Zg22y-s03OZzgsMsoCJFh7tmDrZ_azDgppudAxmYb3YGLq9bDvgKL13xoTHG1KF2y4hhyB0sWw5k4HjZMhAhB3zOS1fclXGwRRhuR8uYAxk4VsYMRMgBj1N0eKfC8Kiwxuqy73H29XVQYY8rrJG5FB1uyvgI7izz2rrJutdZ19VR5r3OvDbyUHR4I-vT1Nc8bb2vCjmQgX1VyECEHPA5RYd_Kg6LimvOrsoJLsJJbi8V97TimjmGosMbVU5wEbXWWkXVk0XVdWdW6f5Vaa0cT9EhImqfKCqvPaNqJ41q682u8v2p8trZj6LDPxVPGBXXnFWll6yueQlrWxVzUHHNHEPRAQDaUnQo_Ug-wqP5LVTPQIQcbKF6DmSAWxQdAKAtRQcAaEvReXKdnubtdCxH6rZv3Y7nKJ32rdOxsJ6iQ-nX5M86HMNMXfavy3HM0mH_OhwD21J0AIC2FB0AoC1F54l1fB274zHB3jrebzoeE8soOk-u0-vZnY4Fjtbp_tPpWFhP0WF3hg4RcsBfcsDRFB12Z7ARIQf8JQccTdF5cp2GTqdjgaN1uv90OhbWU3SeWMcf1ut4TLC3jvebjsfEMooOANCWogMAtKXoPLkxRovXs0cMT1Uv1CUDEXKwRpccyADXFB0AoC1FBwBoS9EhImr_OmbltWdSfR-rrz-LyvtYee3sR9GhxevZHY5hpi771-U4Zumwfx2OgW0pOgBAW4oO_1R82rfimrOq_Fs3ftNmWxVzUHHNHEPRISJqP91bee0ZVTthVFtvdpXvT5XXzn4UHd6odNKotNYqqp4oqq47s0r3r0pr5XiKDv9UPFlUXHN2lV7C8pLVPiruacU1cwxFhzeqnOSc4PZVIQcysK8KGYiQAz6n6PBO9gFnsB0jcw5k4BiZMxAhBzxG0eGmrAPOYDtWxhzIwLEyZiBCDnjctxjjNHsR5HUeJLMH3fn6DbY5MuRABubKkIHL65cDPjPGiJfTyTM63JdhuBls883OgQzMNzsDl9ctB3yFosOnZg44gy2PWTmQgTzMAiry0hVfctSgM9RyOyIHMpCbWUB255euFB0WuRw6Wwy668sw1GrYMwcyUMP17SQHZKHosJmlg84w62VJDhTcfpaUXzlgD4oOu_lo0Blmz-WRHMhAb_fKrxywN0WHQ7w52RlmT0sOiJADjqXoAABteR8dAKA9RQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKCtH7MXQG9jjJv_5rnIARFywByKDrs4D7GXtx9893l6u5cDGXgOl7ezHDCDosOmbp7YXhlyz-OhHMhAa_cy8ObjcsDO_IwOmxljxEt8PNgunb_OcOvn0RzIQF9mAZkoOmziPNi-yoDrZUkOZKAXs4BsFB1W22I4GXD1rb0NZaA-s4CMFB02seQR3BbfSy5Lb0sZ6MMsIBtFB1htq0fhHs0DW1N0gE2sfTTu0TywB0WHVbZ8BO7RPNRlFpCVosNqWzwS92ge6jMLyEjRYZUxRvza4HJ-hUdxUJlZQFaKDrCJtSe5LU6SANcUHWA1v3UFZKXosIk1j8Y9ku9j6W0pA32YBWSj6LCad0MlwjsjYxaQk6LDJpb-IKIfPOxlSQ5koBezgGwUHTZzHnCPDLnz1xls_TyaAxnoyywgkx-zF0Av_4bV6_9evifGr1tfR0uP5EAGervOQIQcMIeiwy5uDTkD7fnIAW9ubzlggm8xxmn2IgAAtjTGiJfTyTM6exsewTw9GSBCDpCBWRSdjV2Hd8S4-Tkh7-3Nbf1BBm79N32YBUSYBRl46WoDHwX57vdcfZ2Q13bvpHb3--4MPuoxCzAL8ji_dKXoLLA0yHcvU8jLWXJSu3t5TnjlmAVEmAVZKToLnMO2RZDvXs_r5Qt3TnKADBAhB9kpOl9wVJjfXa9wpyIHyAARclCFovOAWWF-tw7hnipDDmRgPjkgQwYur18O7lN0PjHGmB7mayOGYB8sWw5kYA45IFsGIuTgM-ei429d3ZAx0BFCfbSMOZCB48kBGTMQIQePUnSuVAhNhTVWl3mPDbfjZD3BncnB_irscYU1zqTo3JB6sCVeWzeZ91rZ2V_6kpN4bd1k3uvMa8tC0bmQfbCdOcntSw6QASLkoAtF51XFkFRcc3YV97TimjOruJ8V15xdxT2tuOYjKDoXKjT3s0prrabS3lZaayWV9rXSWquptLeV1no0RSdqt-DKa8-m8l5WXnsmlfex8tqzqbyXlde-F0XnVcU2XHHN2VXc04przqziflZcc3YV97Timo-g6DSgwa9nD-lAjtezh_08fdGpHmoNfjvV97J6lmervn_V85tJ9b2snuWtPX3Riagf6gjBXqPD3nXIcAYd9rFDnmfpsHcdMrw1RacBwV7PHtKBHK9nD_tRdACAtp666FR518tHeGfMZWSACDlABjp76qIDAPSm6AAAbSk6AEBbig4A0Jaic4AuP-DGcjJAhBwgAzMoOgcQbGSACDlABmZQdACAthQdAKAtRQcAaEvRAQDaeuqi4y2_kQEi5AAZ6Oypiw4A0Jui00CXRyEz2UM6kOP17GE_ik70CLanKZfrsHcdMpxBh33skOdZOuxdhwxv7emLTvVgC_V2qu9l9SzPVn3_quc3k-p7WT3LW3v6otOBUK9nD-lAjtezh_0oOq8qNviKa86u4p5WXHNmFfez4pqzq7inFdd8BEUnajf4ymvPpvJeVl57JpX3sfLas6m8l5XXvhdF50KlNlxprdVU2ttKa62k0r5WWms1lfa20lqPpui8qtiCK645u4p7WnHNmVXcz4przq7inlZc8xEUnQtV3hnTu17uSw6QASLkoAtF54bMwc68tm4y77XBtr_sJ7nMa-sm815nXlsWis6VCiePCmusLvMeKznHSV925GB3Ffa4whpnUnRuyDrcnOCOlTEHMnA8OSBjBiLk4FHfYozT7EVkdQ7Q7ICfr1-g58iQAxmYTw7IkIHL65eD-8YY8XI6KTqPmBVuYc5FDpABIuSgCkVngaPCLcy5yQEyQIQcZKforHAdti1CfnkZwlzD5e20dQauL5-czAIizIKsFJ0NLQm5IPey9ITnpNaLWYBZkIeis5N7IRfk5_HRCc9J7XmYBUSYBTMpOgd5E3JBfkoyQIQcIANHU3QAgLbORccbBgIAbSk6AEBbig4A0JaiAwC0pegAAG0pOgBAW4oOANCWogMAtKXoAABtKToAQFuKDgDQlqIDALSl6AAAbSk6AEBbig4A0JaiAwC0pegAAG0pOgBAW4oOANCWogMAtKXoAABtKToAQFuKDgDQlqIDALSl6AAAbSk6AEBbig4A0JaiAwC0pegAAG0pOgBAW4oOANCWogMAtKXoAABtKToAQFuKDgDQlqIDALSl6AAAbSk6AEBbP2YvoKsxxpc-Tk9ygAwQIQczfYsxTrMX0cV1YF9ufM2vO19PD5e362cZuP56ejALiDALZhtjxMvppOhsZYxxM8j3_ArB7kYOkAEi5CCDc9HxMzobWBLoiL8NX6j7kANkgAg5yEbRWWmLUAp2fXKADBAhBxkpOhtY0ty3-F5ykQNkgAg5yEbRSUKDr8ttx5bkqS63XU6KTgIafH1uQ7YgR_W5DfNRdACAthQdAKAtRQcAaEvRAQDaUnQS8G6YtY0x3r2VOyxhFtRmFuSk6GxgTbDdKfqQA2SACDnIRtFZybtgEiEHyAB_yUE-is4Glj5d6WnqXuQAGSBCDrL5v_j5c8xeRAe_f_6Mb79_x5-I-PnJ1_6KiD8h0B3JATJAhBxk8PP37_g5RnyLMU6zF9PNZVgv3yXz143P09f5dr6VgcvP05dZQIRZMMsYI15OJ0Vnb5cBFubnJANEyAEycDRFBwBo61x0fux9Jbf-zfOQASLkgL_kgBkZ2LzovDmIGLc_LuCtPZKBW_9NL2YB7-7zcvCUZs-C1S9d3Qvyh99z9TVCXtuSDFx_nQzUZxYQ8fFJ7e73yEErWWbBqp_RWRLku5fnhFfOnhm4vnzyMgtY-kDn7mXKQTkZZ8GionO-si0O4sPreL1s4c7piAxcXr4c5GQWYBYQkXsWfKnoHBXoN9cp3KnMyMDl9clBDmYBZgERNWbBueh8-icghJpZGbi8TjmYzyzALCCi3iy4W3RmhvryegV7ntkZuLxuOZhndg5kYL7ZGbi8bjmYZ3YOlmTgw5euxhhTA31txBDug2XLQIQczJAtBzJwvGwZiJCDGbLl4LMM3H3pKtvBRAj10TJmIEIOjpYxBzJwrIwZiJCDo2XMwaMZeFd0Mh7MmWAfI3MGIuTgKJlzIAPHyJyBCDk4SuYcPJKBN0Un88GcCfa-KmQgQg72ViEHMrCvChmIkIO9VcjBZxn4V3QqHMyZYO-j4p5WXHN2ZgEV97TimrPrMgu-R9QNSNV1Z1Yl1BG11lpF1ftU1XVnVun-VWmtVVS9T91a9_-e0SkWlGrrza5qqCNqrz2javetauvNrvL9qfLaM6p23_povd8rPTV1zdPW26qYg4przsos4KxiDiquOatus-DTd0YGAKiqRdHxSG6dDvvX4Rhm6rJ_XY5jlg771-EYZuqyf5fH8b3q01Nn1defReV9rLz2TKrvY_X1Z1F5HyuvPZPq-3i9_hbP6AAA3KLoAABttSg6fuNiuco_XX9JBpbrkoEIOVijSw5kYLkuGYh4-_JVi6IDAHCLogMAtKXoPLGOT-92PCbYW8f7TcdjYhlF58l1eT02otexwNE63X86HQvr7V50BA4ZIEIO-EsOODoDig67kwEi5IC_5IB2RYfcOg2dTscCR-t0_-l0LKyn6Dyxjj-s1_GYYG8d7zcdj4llFB0AoC1FBwBoq0XR8XrsOh32r8MxzNRl_7ocxywd9q_DMczUZf9a_gkIr8cu02nfOh3LkbrtW7fjOUqnfet0LEfqum9tig4AwDVFBwBo63v11-NGjLZPtx1ljFH6dVkZWK96BiLkYAvVcyAD61XPQMT7HHhGBwBo63vl9qa9b6tiDiquOSuzgLOKOai45qy6zYLvl5-spNp6s6t8kqi89oyq3beqrTe7yvenymvPqNp966P1fo-oG46q686sUrArrbWKqvepquvOrNL9q9Jaq6h6n7q17u-Xn6wSFk9T76PinlZcc3ZmARX3tOKas-syC978MHKFgzLY9lUhAxFysLcKOZCBfVXIQIQc7K1CDj7LwM3fusp6UFnX1VHmvc68tm6y7nXWdXWUea8zr62brHv9yLreFZ3szTj7-jqosMcV1lhd9j3Ovr4OKuxxhTVWl32PP1vf7Wd0Ej5V5enJY2XMQIQcHC1jDmTgWBkzECEHR8uYg0cz8C3GOH14Ia8XMPPgztct0HNkyMDl9cvBHBlyIANzZcjA5fXLwRwZcvBoBsYY8XI63S86l198eeFHEOZcZoVbDnIxCzALiKgxC75UdC6_6fLK9iDMuR0VbjnIzSzALCAi9yxYVHQuv_l6AWtcXoYw17BnBq4vn7zMAq5vJzl4Thlnwaqic31Bb_77gQN0Uutl6aAzzHoxC4hYdsKTg16yzILNis6tC_737_jg30Lc2iMZuP46-jELuHfCk4PnMWsW7FZ0rq_k1r95HjJAhBzwlxxwZAYOKToAADOci87NNwwEAOhA0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2vqx54WPMW7-m-chA0TIAX_JATMysHnRuVz4y9tPvPs8fZ1v51sZuPw8vd3LgQw8B-cEIuaeE77FGKctLujmQdzw68b30MOHA-0GOejr0RzIQF9mARHLcrBlBsYY8XI6bVN0xhifHsS1PQ6KeR4tutfkoJclOZCBXswCItblYKsMnIvO6h9GXrqg88ELdX1LA335PXJQ39IcyEAfZgER63Jw-f1b2eS3rpYezNLvI581t6Uc9GEWYBYQkWsWrCo6Wz69BNRlFgAROWfB6md01rYvDR56MAuAiHyzwBsGssrWPyEP1GQWkJWiw2pbtG-P5qE-s4Bs_vz5o-iw3q_Pv-SQywDmMgvI5r___lN0WMfT1UCEWUBeq4vO2vatvUMPZgEQkW8W-PVyYDWzAIjIOQs2eWfkpe1ry7d6Zp41GYiQgy7MAswCIvLNgs1-RuerByXQvSwNthz0siQHMtCLWUDE8lmwh_-Lnz_H2gv5_fNn_Pz9O_5ExM9PvvZXRPwJge7o98-f8U0Ont6jOZCBvswCIr6eg4htc_Dz9-_4OcY2f7380uUiL98PwV-mfS63_qjbrxufp7d7OZCB5-CcQMScc8J4_evlmxed6yu59W-ehwwQIQf8JQccmYFDig4AwAznovNj9kK68wgGGSBCDpCBWRSdjV2Hd8S4-Tkh7-3Nbf1BBm79N32YBUSYBRl46WoDHwX57vdcfZ2Q13bvpHb3--4MPuoxCzAL8vAzOissDfLdyxTycpac1O5enhNeOWYBEWZBVorOAuewbRHku9fzevnCnZMcIANEyEF2is4XHBXmd9cr3KnMzIEM5DHGMAuenHNCDeeis9mfgOhqVqAvr1Oo55udAxnIYUbJiTALMpk9Cy7XwGMUnTtmBvrfGgR7uiw5kIG5ZpWcf9dvFkyXZRZcroXPeenqA7OH2i1OdsfLlgMZmEMOyJaBCDn4jJeu7sgY6AihPlrGHJwzIAfHOO911hxwjIwZiJCDRyk6V7IG-kywj5E5B566PkaGlynuMQuOkXkWRMjBIxSdC9kDfSbY-6qQg3H-PznYxTkDJXIgA7upMAsi5OAzis6riiGpuObsKu5pxTVnVnE_K645u4p7WnHNR1B0LlRo7meV1lpNpb2ttNZKKu1rpbVWU2lvK631aIpO1G7BldeeTeW9rLz2TCrvY-W1Z1N5LyuvfS-KzquKbbjimrOruKcV15xZxf2suObsKu5pxTUfQdFpQINfzx7SgRyvZw_7efqiUz3UGvx2qu9l9SzPVn3_quc3k-p7WT3LW3v6ohNRP9QRgr1Gh73rkOEMOuxjhzzP0mHvOmR4a4pOA4K9nj2kAzlezx72o-gAAG09ddHp8DTlpW7Hc4Rue9bteI7Sbd-6Hc8Ruu1Zt-NZ46mLTkSfpym7HMcMXfauy3HM0mX_uhzHDF32rstxbOXpiw4A0JeiAwC0pegAAG0pOgfweikyQIQcIAMzKDoHEGxkgAg5QAZmUHQAgLYUHQCgLUUHAGhL0QEA2nr6otPlB8O6HMcMXfauy3HM0mX_uhzHDF32rstxbOWpi063vwXS7XiO0G3Puh3PUbrtW7fjOUK3Pet2PGs8ddEBAHpTdBoYMbT3FcYYnuqlBbNgHbOgp6cvOoJNB05w65kFdGAWvPf0Rac6od6GkxzVmQXbMAv6UXReVQx2xTVnV3FPK645s4r7WXHN2VXc04prPoKiE7V_Or3y2rOpvJeV155J5X2svPZsKu9l5bXvRdG5UKkNV1prNZX2ttJaK6m0r5XWWk2lva201qMpOq8qtuCKa86u4p5WXHNmFfez4pqzq7inFdd8BEXnQpUfQvNDh_uSA2SACDnoQtG5IXOwM6-tm8x7bbDtL_tJLvPausm815nXloWic6XCyaPCGqvLvMdKznHSlx052F2FPa6wxpkUnRuyDjcnuGNlzIEMHE8OyJiBCDl41LcY4zR7EVmdAzQ74OfrF-g5MuVABubJcLIzC-bKNAsi5OAzY4x4OZ08o3NPhlAL9HxZciADc80uOmbBfFlmweVa-Jyi84mZwRboPGbnQAZymFV2zII8Zs-CyzXwGC9dfcFluPYK-eXlCnNOcoAMECEH2Z1fulJ0FroVuCVBv_4eQa7l-vbaIgO3Lpe8zAIizIKMFJ2NPTrsDLPeHhl2hllvZgERZkEGis4Bbg48IX4qMkCEHCADMyg6AEBbfr0cAGhP0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2lJ0AIC2FB0AoC1FBwBoS9EBANpSdACAthQdAKAtRQcAaEvRAQDaUnQAgLYUHQCgLUUHAGhL0QEA2voxewHdjTFu_pvnIQNEyAEyMIuis4PLAL-8_cS7z9PX-Xa-lYHLz9OXWUCEWTDbtxjjNHsRXdwM8w2_rr6eXuQAGSBCDmYbY8TL6aTobGWM8WmYr_0Kwe5GDpABIuQgg3PR8cPIG1gS6Ii_LV-o-5ADZIAIOchG0VlpaaDPBLsHOUAGiJCDjBSdJAS7LrcdW5Knutx2OSk6Caxp_-TgNmQLclSf2zAfRQcAaEvRAQDaUnQAgLYUHQCgLUUngV-ffwnJuQ3ZghzV5zbMR9FJwq8l1uW2Y0vyVJfbLidFZwNrGrz234ccIANEyEE2is5K5wa_JJz-kFsfcoAMECEHGfmjnhu5DOajf6n2-vuoTw6QASLkIAN_vXxHHwVcW38u59v5VgYuP09fZgERZsEsis5BLgMszM9JBoiQA2TgaIoOANDWuej8mL0QevMIhgg54C85YAZFh829GWYxbn781n_TyyM5kIHe3t3n5YAJvHTFaveG2d3vu1OCqGdJDq6_Rg7q-6jg3v0eOWAHfkaHVZYMs7uXZ9CVtGcOZKCGpQ907l6mHLABRYdFzkNni2F293peL9-Qy-mIHMhAbmYB2Sk6fMlRQ-3d9RpyqczIgQzkYhZQxbno-BMQfGrWYLu8TsNtPic4zAIqUnS4a-Zg-7cGA2662TmQgflmZ-DyuuWAr_DSFR8aY0wdareMGIbcwbLlQAaOly0DEXLA57x0xV0ZB1uE4Xa0jDmQgWNlzECEHPA4RYd3KgyPCmusLvseZ19fBxX2uMIamUvR4aaMj-DOMq-tm6x7nXVdHWXe68xrIw9FhzeyPk19zdPW-6qQAxnYV4UMRMgBn1N0-KfKYDsz4PZRKQcysI9KGYiQA-5TdIB_qp3gIpzkgPsUHSKi5gkuwkluS1UzECEHW6qaAxngI4oOANCWokOLR0EdjmGmLvvX5Thm6bB_HY6BbSk6RETtX9OsvPZMqu9j9fVnUXkfK6-d_Sg6AEBbig4A0Jai8-Q6vZ7d6ViO1G3fuh3PUTrtW6djYT1Fhxava3c4hpm67F-X45ilw_51OAa2pegAAG0pOgBAW4rOE6v6Dqgf8c6osIxZQGeKDrvrNEBZTg6IkAOOp-iwO4ONCDngLzngaIrOk-s0dDodCxyt0_2n07GwnqLzxDq-ht3xmGBvHe83HY-JZRQdAKAtRQcAaEvRocXr2R2OYaYu-9flOGbpsH8djoFtKTpPrtPr2J2O5Ujd9q3b8Ryl0751OhbWU3QAgLYUHQCgLUWHiKj9unbltWdSfR-rrz-LyvtYee3sR9GhxevZHY5hpi771-U4Zumwfx2OgW0pOgBAW4oOEVH3rxf7K8XbqZqBCDnYUtUcyAAfUXSAfyqe5JzggHsUHf6pdpJzgttHpRzIwD4qZSBCDrhP0eGNKgPOYNtXhRzIwL4qZCBCDvicosNNmQdc5rV1k3Wvs66ro8x7nXlt5KHo8E6FR0cV1lhd9j3Ovr4OKuxxhTUyl6LDTVmftvY09bEy5kAGjpUxAxFywOO-xRin2Ysgr_MgmT3oztdvsM2RIQcyMFeGDFxevxzwmTFGvJxOntHhvgzDzWCbb3YOZGC-2Rm4vG454CsUHT41c8AZbHnMyoEM5GEWUJGXrviSowadoZbbETmQgdzMArI7v3Sl6LDI5dDZYtBdX4ahVsOeOZCBGq5vJzkgC0WHzSwddIZZL0tyoOD2s6T8ygF7UHTYzUeDzjB7Lo_kQAZ6u1d-5YC9KToc4s3JzjB7WnJAhBxwLEUHAGjL--gAAO0pOgBAW4oOANCWogMAtKXoAABtKToAQFuKDgDQlqIDALSl6AAAbSk6AEBbig4A0JaiAwC0pegAAG0pOgBAW4oOANCWogMAtKXoAABtKToAQFuKDgDQlqIDALSl6AAAbSk6AEBbig4A0JaiAwC0pegAAG0pOgBAW4oOANCWogMAtKXoAABtKToAQFuKDgDQlqIDALSl6AAAbSk6AEBbig4A0JaiAwC0pegAAG39mL0Aehtj3Pw3z0UOiJAD5lB02MV5iL28_eC7z9PbvRzIwHO4vJ3lgBkUHTZ188T2ypB7Hg_lQAZau5eBNx-XA3bmZ3TYzBgjXuLjwXbp_HWGWz-P5kAG-jILyETRYRPnwfZVBlwvS3IgA72YBWSj6LDaFsPJgKtv7W0oA_WZrqonoAAAAPdJREFUBWSk6LCJJY_gtvhecll6W8pAH2YB2Sg6wGpLX6645KULYA-KDqtseWJykoO6zAKyUnRYbYunmz1lDfWZBWSk6LDarySXAcxlFpCRosMqnq4GIswC8lJ0gE2sfSTukTywB0UHWG2rR-AeyQNbU3TYxJpH4x7J97H0tpSBPswCslF0WM27oRLhnZExC8hJ0WETY4xFj8Z-hcHWyZIcyEAvZgHZ_Ji9APoYY0RcDKpb74dxPQANtn6-mgMZ6Oc6AxFywDzfRozT__5zvP7_NR_3cR_3cR_3cR_38Xof_3Y6nU43vgJgM3_-_In__vtv9jKAJ_T_w7ltd685nBQAAAAASUVORK5CYII=" width="800" height="800" alt="Alt_name" title="Mytitle" align="center" /></p>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Let&#39;s convert it to an .html and see if this helps</span>
+<span class="o">!</span>jupyter nbconvert --to html img2base64.ipynb
+</pre></div>
 
 </div>
 </div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[NbConvertApp] Converting notebook img2base64.ipynb to html
+[NbConvertApp] Writing 269323 bytes to img2base64.html
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Running this cell shows the same thing - no image</span>
+<span class="o">!</span>firefox img2base64.html
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
